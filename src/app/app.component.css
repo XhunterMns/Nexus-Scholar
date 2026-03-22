@@ -1,0 +1,166 @@
+:root {
+	--bg: #0f1720;
+	--panel: #111827;
+	--muted: #9ca3af;
+	--accent: #6d28d9;
+	/* purple */
+	--glass: rgba(255, 255, 255, 0.03);
+	--surface: rgba(255, 255, 255, 0.03);
+	--accent-2: linear-gradient(135deg, #7c3aed, #ec4899);
+}
+
+* {
+	box-sizing: border-box
+}
+
+html,
+body,
+#root,
+app-root {
+	height: 100%
+}
+
+body {
+	margin: 0;
+	font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+	background: var(--bg);
+	color: #e6edf3;
+}
+
+.app-shell {
+	display: flex;
+	min-height: 100vh
+}
+
+.sidebar {
+	width: 240px;
+	background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent);
+	border-right: 1px solid rgba(255, 255, 255, 0.04);
+	padding: 20px 20px;
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	transition: width .22s ease, box-shadow .15s ease;
+	box-shadow: inset -1px 0 0 rgba(255, 255, 255, 0.01);
+}
+
+.sidebar .brand {
+	font-weight: 700;
+	font-size: 1.25rem;
+	color: var(--accent)
+}
+
+.nav {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	margin-top: 12px
+}
+
+.nav a {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	padding: 10px 12px;
+	border-radius: 10px;
+	color: var(--muted);
+	text-decoration: none;
+	transition: background .15s ease, color .15s ease, transform .08s
+}
+
+.nav a:hover {
+	background: var(--surface);
+	color: #e24f4f;
+	transform: translateX(2px)
+}
+
+.nav a.active {
+	background: linear-gradient(90deg, var(--accent), #ec4899);
+	color: #160f0f;
+	box-shadow: 0 4px 18px rgba(109, 40, 217, 0.12)
+}
+
+.nav a .label {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis
+}
+
+.footer {
+	margin-top: auto;
+	color: var(--muted);
+	font-size: 0.85rem
+}
+
+.workspace {
+	flex: 1;
+	display: flex;
+	flex-direction: column
+}
+
+.topbar {
+	padding: 16px 24px;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+	display: flex;
+	align-items: center;
+	gap: 12px
+}
+
+.topbar h1 {
+	margin: 0;
+	font-size: 1.125rem
+}
+
+.content-area {
+	padding: 28px;
+	display: flex;
+	align-items: flex-start;
+	justify-content: center
+}
+
+/* responsive */
+@media (max-width:1024px) {
+	.sidebar {
+		width: 80px;
+		padding: 12px
+	}
+
+	.nav a {
+		font-size: 0.85rem;
+		padding: 8px
+	}
+
+	.nav a .label {
+		display: none
+	}
+}
+
+@media (max-width:700px) {
+	.app-shell {
+		flex-direction: column
+	}
+
+	.sidebar {
+		width: 100%;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		gap: 8px;
+		padding: 8px 12px
+	}
+
+	.workspace {
+		padding-top: 8px
+	}
+
+	.nav {
+		flex-direction: row;
+		gap: 6px;
+		margin-top: 0
+	}
+
+	.nav a {
+		padding: 8px 10px;
+		border-radius: 8px
+	}
+}

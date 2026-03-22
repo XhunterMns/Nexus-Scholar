@@ -1,0 +1,262 @@
+/* =======================
+   GLOBAL STYLE
+======================= */
+:root {
+  --bg: #0f172a;
+  --panel: #111827;
+  --accent: #6366f1;
+  --muted: #94a3b8;
+  --card: rgba(255, 255, 255, 0.03);
+}
+
+body {
+  background: var(--bg);
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+}
+
+/* =======================
+   LAYOUT
+======================= */
+.flash-page {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.header h1 {
+  font-size: 1.8rem;
+  margin-bottom: 6px;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+/* =======================
+   BUTTONS
+======================= */
+.btn {
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: 0.25s ease;
+  font-weight: 500;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+.btn.accent {
+  background: var(--accent);
+  color: #fff;
+}
+
+.btn.ghost {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.08);
+  color: var(--muted);
+}
+
+.btn.good {
+  background: #22c55e;
+}
+
+.btn.bad {
+  background: #ef4444;
+}
+
+/* =======================
+   DECKS
+======================= */
+.decks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 16px;
+}
+
+.deck-card {
+  background-color: #b2b7be;
+
+  padding: 16px;
+  border-radius: 14px;
+  backdrop-filter: blur(8px);
+  transition: 0.3s;
+  border: 1px solid rgba(255,255,255,0.04);
+}
+
+.deck-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+}
+
+.deck-head {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.deck-head .icon {
+  font-size: 1.6rem;
+}
+
+.deck-meta {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.deck-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+/* =======================
+   MODAL
+======================= */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+}
+
+.modal-body {
+  background: var(--panel);
+  padding: 20px;
+  border-radius: 14px;
+  width: 420px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+input, textarea {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 8px;
+  padding: 10px;
+  color: white;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+/* =======================
+   CARDS LIST
+======================= */
+.card-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.02);
+  margin-bottom: 8px;
+  transition: 0.2s;
+}
+
+.card-row:hover {
+  background: rgba(255,255,255,0.05);
+}
+
+.empty {
+  text-align: center;
+  padding: 30px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.02);
+  color: var(--muted);
+}
+
+/* =======================
+   STUDY MODE 🔥
+======================= */
+.study-root {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.study-top {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  color: var(--muted);
+}
+
+/* card container */
+.card-wrap {
+  perspective: 1200px;
+}
+
+/* main card */
+.study-card {
+  width: 100%;
+  height: 320px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s ease;
+  cursor: pointer;
+}
+
+/* flip effect */
+.study-card.show-answer {
+  transform: rotateY(180deg);
+}
+
+/* faces */
+.study-card .front,
+.study-card .back {
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 1.2rem;
+
+  background: linear-gradient(
+    180deg,
+    rgba(255,255,255,0.04),
+    rgba(255,255,255,0.02)
+  );
+
+  border: 1px solid rgba(255,255,255,0.05);
+  backface-visibility: hidden;
+}
+
+/* back rotation */
+.study-card .back {
+  transform: rotateY(180deg);
+}
+
+/* hover glow 🔥 */
+.study-card:hover {
+  box-shadow: 0 10px 40px rgba(99,102,241,0.2);
+}
+
+/* =======================
+   ACTIONS
+======================= */
+.study-actions {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.btn.large {
+  padding: 14px 20px;
+  font-size: 1.05rem;
+}

@@ -1,0 +1,8 @@
+{
+  "routes": [
+    "/dashboard",
+    "/flashcards",
+    "/notes",
+    "/pomodoro"
+  ]
+}

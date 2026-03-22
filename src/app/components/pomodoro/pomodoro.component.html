@@ -1,0 +1,18 @@
+<div class="pom-root">
+	<div class="controls">
+		<div class="btn-group">
+			<button class="btn" (click)="start(1500)">25 min</button>
+			<button class="btn" (click)="start(3000)">50 min</button>
+			<button class="btn ghost" (click)="reset()">Reset</button>
+		</div>
+	</div>
+
+
+
+	<div class="actions">
+		<button class="btn ghost" (click)="reset()">Reset</button>
+	</div>
+	 <div class="timer-display" *ngIf="timeLeft >= 0">
+    <h2>{{ formatTime(timeLeft) }}</h2>
+  </div>
+     </div> 

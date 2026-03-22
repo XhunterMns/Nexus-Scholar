@@ -1,0 +1,138 @@
+.notes-root {
+	display: grid;
+	grid-template-columns: 260px 1fr;
+	gap: 20px;
+	padding: 16px;
+	height: calc(100vh - 80px);
+	box-sizing: border-box
+}
+
+.side {
+	display: flex;
+	flex-direction: column;
+	gap: 12px
+}
+
+.folders,
+.notes-list {
+	background: var(--panel, #fff);
+	border: 1px solid rgba(0, 0, 0, 0.06);
+	padding: 12px;
+	border-radius: 8px
+}
+
+.btn {
+	background: linear-gradient(180deg, #2b6cb0, #2c5282);
+	color: #fff;
+	border: none;
+	padding: 8px 10px;
+	border-radius: 6px;
+	cursor: pointer;
+	font-weight: 600
+}
+
+.btn.muted {
+	background: transparent;
+	color: #c0392b;
+	border: 1px solid rgba(0, 0, 0, 0.06)
+}
+
+.link {
+	background: transparent;
+	border: none;
+	text-align: left;
+	padding: 6px 8px;
+	width: 100%;
+	cursor: pointer;
+	border-radius: 6px
+}
+
+.link:hover {
+	background: rgba(0, 0, 0, 0.03)
+}
+
+ul {
+	list-style: none;
+	margin: 8px 0 0;
+	padding: 0
+}
+
+li {
+	margin: 4px 0
+}
+
+li.active>.link {
+	background: linear-gradient(90deg, #e6f2ff, #f0fbff);
+	font-weight: 700
+}
+
+.count {
+	color: #666;
+	font-size: 12px;
+	margin-left: 6px
+}
+
+.editor {
+	display: flex;
+	flex-direction: column;
+	background: var(--panel, #fff);
+	border: 1px solid rgba(0, 0, 0, 0.06);
+	padding: 12px;
+	border-radius: 8px
+}
+
+.editor-toolbar {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	margin-bottom: 8px
+}
+
+.title {
+	flex: 1;
+	padding: 8px 10px;
+	font-size: 18px;
+	border: 1px solid rgba(0, 0, 0, 0.06);
+	border-radius: 6px
+}
+
+.toolbar-actions {
+	display: flex;
+	gap: 8px
+}
+
+.body {
+	flex: 1;
+	resize: none;
+	padding: 12px;
+	border: 1px solid rgba(0, 0, 0, 0.06);
+	border-radius: 6px;
+	font-size: 14px;
+	line-height: 1.5;
+	min-height: 200px;
+	height: calc(100% - 60px);
+}
+
+.empty {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #888;
+	font-size: 16px
+}
+
+@media (max-width:900px) {
+	.notes-root {
+		grid-template-columns: 1fr;
+		height: auto
+	}
+
+	.side {
+		flex-direction: row;
+		overflow: auto
+	}
+
+	.editor {
+		margin-top: 8px
+	}
+}

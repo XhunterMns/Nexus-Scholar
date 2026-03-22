@@ -1,0 +1,23 @@
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="brand">Study</div>
+    <nav class="nav">
+      <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+      <a routerLink="/flashcards" routerLinkActive="active">Flashcards</a>
+      <a routerLink="/pomodoro" routerLinkActive="active">Pomodoro</a>
+      <a routerLink="/notes" routerLinkActive="active">Notes</a>
+    </nav>
+    <div class="footer">Dark • Minimal</div>
+  </aside>
+
+  <main class="workspace">
+    <header class="topbar">
+      <h1>{{ title }}</h1>
+    </header>
+
+    <section class="content-area">
+      <router-outlet></router-outlet>
+    </section>
+  </main>
+</div>
+

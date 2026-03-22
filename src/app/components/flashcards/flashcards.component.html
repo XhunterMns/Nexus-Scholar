@@ -1,0 +1,111 @@
+<div class="flash-page">
+  <div *ngIf="!selectedDeckId">
+    <div class="header">
+      <h1>Flashcard Creator</h1>
+      <p class="muted">Organize your knowledge with custom study decks.</p>
+    </div>
+
+    <div class="controls">
+      <button class="btn accent" (click)="showCreateDeck = true">+ New Deck</button>
+    </div>
+
+    <div class="decks-grid">
+      <div *ngFor="let d of decks" class="deck-card">
+        <div class="deck-head">
+          <div class="icon">📚</div>
+          <div>
+            <div class="title">{{ d.title }}</div>
+            <div class="desc">{{ d.description }}</div>
+          </div>
+        </div>
+        <div class="deck-meta">{{ d.cardCount }} Cards</div>
+        <div class="deck-actions">
+          <button class="btn ghost" (click)="selectDeck(d.id)">View Cards</button>
+          <button class="btn" (click)="selectDeck(d.id); startStudy();">Study</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- create deck modal -->
+    <div class="modal" *ngIf="showCreateDeck">
+      <div class="modal-body">
+        <h3>Create Deck</h3>
+        <label>Title</label>
+        <input [value]="newDeck.title" (input)="newDeck.title = $any($event.target).value" />
+        <label>Description</label>
+        <textarea [value]="newDeck.description" (input)="newDeck.description = $any($event.target).value"></textarea>
+        <div class="modal-actions">
+          <button class="btn" (click)="createDeck()">Create</button>
+          <button class="btn ghost" (click)="showCreateDeck=false">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="selectedDeckId && !studyMode">
+    <div class="deck-header">
+      <button class="btn ghost" (click)="selectDeck(null)">← All Decks</button>
+      <h2>{{ selectedDeck?.title }}</h2>
+      <div>
+        <button class="btn" (click)="showCreateCard = true">+ Add Card</button>
+        <!-- bulk import / file upload -->
+        <label class="btn ghost" style="display:inline-flex;align-items:center;gap:.5rem">
+          Upload File
+          <input type="file" (change)="onFileSelected($event)" style="display:none" />
+        </label>
+        <button class="btn" (click)="upload()">Generate Cards</button>
+      </div>
+    </div>
+
+    <div class="cards-list">
+      <div *ngFor="let c of deckCards" class="card-row">
+        <div class="q">{{ c.question }}</div>
+        <div class="a">{{ c.answer }}</div>
+      </div>
+      <div *ngIf="deckCards.length === 0" class="empty">
+        <p>This deck is looking a bit empty. Add your first card to start studying!</p>
+      </div>
+    </div>
+
+    <!-- add card modal -->
+    <div class="modal" *ngIf="showCreateCard">
+      <div class="modal-body">
+        <h3>New Flashcard</h3>
+        <label>Question</label>
+        <textarea [value]="newCard.question" (input)="newCard.question = $any($event.target).value"></textarea>
+        <label>Answer</label>
+        <textarea [value]="newCard.answer" (input)="newCard.answer = $any($event.target).value"></textarea>
+        <div class="modal-actions">
+          <button class="btn" (click)="createCard()">Add to Deck</button>
+          <button class="btn ghost" (click)="showCreateCard=false">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="studyMode && selectedDeckId" class="study-root">
+    <div class="study-top">
+      <button class="btn ghost" (click)="studyMode=false">Exit Study</button>
+      <div class="progress">Card {{ currentCardIdx + 1 }} of {{ deckCards.length }}</div>
+    </div>
+
+    <div class="card-wrap" (click)="toggleShowAnswer()">
+        <div class="study-card" [class.show-answer]="showAnswer">
+        <div class="front">{{ currentCard.question }}</div>
+        <div class="back">{{ currentCard.answer }}</div>
+      </div>
+    </div>
+
+    <div class="study-actions">
+      <div *ngIf="showAnswer; else reveal">
+        <button class="btn" (click)="rateAndNext('Again')">Again</button>
+        <button class="btn" (click)="rateAndNext('Hard')">Hard</button>
+        <button class="btn" (click)="rateAndNext('Good')">Good</button>
+        <button class="btn" (click)="rateAndNext('Easy')">Easy</button>
+      </div>
+      <ng-template #reveal>
+        <button class="btn large" (click)="toggleShowAnswer()">Reveal Answer</button>
+      </ng-template>
+    </div>
+  </div>
+</div>

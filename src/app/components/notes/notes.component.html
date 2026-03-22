@@ -1,0 +1,36 @@
+<div class="notes-root">
+  <aside class="side">
+    <div class="folders">
+      <button class="btn" (click)="createFolder()">+ New Folder</button>
+      <ul>
+        <li *ngFor="let f of folders" [class.active]="f.id===activeFolderId">
+          <button class="link" (click)="activeFolderId = f.id">{{ f.name }} <small class="count">({{ f.notes.length }})</small></button>
+        </li>
+      </ul>
+    </div>
+    <div class="notes-list">
+      <button class="btn" (click)="createNote()">+ New Note</button>
+      <ul>
+        <li *ngFor="let n of activeFolder?.notes" [class.active]="n.id===activeNoteId">
+          <button class="link" (click)="selectNote(activeFolder?.id!, n.id)">{{ n.title }}</button>
+        </li>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="editor">
+    <div *ngIf="activeFolder && activeNote; else empty">
+      <div class="editor-toolbar">
+        <input class="title" [value]="activeNote.title" (input)="onTitleInput($any($event.target).value)" placeholder="Note title" />
+        <div class="toolbar-actions">
+          <button class="btn muted" (click)="removeNote()">Delete</button>
+        </div>
+      </div>
+      <textarea class="body" [value]="activeNote.body" (input)="onBodyInput($any($event.target).value)" (blur)="saveNote(activeNote.body || '')" placeholder="Start writing your note..."></textarea>
+    </div>
+    <ng-template #empty>
+      <div class="empty">No note selected — create a folder and a note to get started.</div>
+    </ng-template>
+  </main>
+</div>
+

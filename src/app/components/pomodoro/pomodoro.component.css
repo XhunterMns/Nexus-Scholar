@@ -1,0 +1,13 @@
+.pom-root{display:flex;flex-direction:column;align-items:center;gap:18px}
+.controls{display:flex;gap:20px;align-items:center}
+.presets{display:flex;gap:8px}
+.preset{padding:8px 10px;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--muted);cursor:pointer}
+.preset:hover{color:#fff}
+.clock{width:220px;height:220px;display:flex;align-items:center;justify-content:center;position:relative;cursor:pointer}
+.ring{width:100%;height:100%}
+.ring .bg{fill:none;stroke:rgba(255,255,255,0.03);stroke-width:6}
+.ring .progress{fill:none;stroke:var(--accent);stroke-width:6;stroke-linecap:round;transform:rotate(-90deg);transform-origin:50% 50%}
+.time{position:absolute;font-size:1.75rem;font-weight:600}
+.actions{display:flex;gap:12px}
+.btn{padding:8px 12px;border-radius:8px;border:0;background:var(--accent);color:#fff}
+.btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--muted)}

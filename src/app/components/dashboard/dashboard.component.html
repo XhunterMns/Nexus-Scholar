@@ -1,0 +1,37 @@
+<div class="dashboard-root">
+	<div class="stats-row">
+		<div class="stat-card">
+			<div class="stat-title">Known</div>
+			<div class="stat-value">{{ known }}</div>
+		</div>
+		<div class="stat-card">
+			<div class="stat-title">Unknown</div>
+			<div class="stat-value">{{ unknown }}</div>
+		</div>
+		<div class="stat-card">
+			<div class="stat-title">Sessions</div>
+			<div class="stat-value">{{ sessions }}</div>
+		</div>
+		<div class="stat-card">
+			<div class="stat-title">Total study</div>
+			<div class="stat-value">{{ totalTimeString }}</div>
+		</div>
+	</div>
+
+	<div class="charts-grid">
+		<div class="chart-card">
+			<h3>Progress</h3>
+			<canvas #chart width="260" height="220"></canvas>
+		</div>
+
+		<div class="chart-card">
+			<h3>Last sessions (minutes)</h3>
+			<canvas #sessionsChart width="380" height="180"></canvas>
+		</div>
+
+		<div class="chart-card">
+			<h3>Activity (last 14 days)</h3>
+			<canvas #sparkline width="640" height="80"></canvas>
+		</div>
+	</div>
+</div>

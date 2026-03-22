@@ -1,0 +1,71 @@
+:root {
+    --card-bg: #0f172a;
+    --panel: #0b1220;
+}
+
+.dashboard-root {
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px
+}
+
+.stats-row {
+    display: flex;
+    gap: 12px;
+    align-items: stretch
+}
+
+.stat-card {
+    flex: 1;
+    background: linear-gradient(180deg, #0b1220, #071027);
+    padding: 12px;
+    border-radius: 10px;
+    color: #fff;
+    box-shadow: 0 6px 20px rgba(2, 6, 23, 0.6)
+}
+
+.stat-title {
+    font-size: 13px;
+    color: #9aa4b2
+}
+
+.stat-value {
+    font-size: 22px;
+    font-weight: 700;
+    margin-top: 6px
+}
+
+.charts-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px
+}
+
+.chart-card {
+    background: var(--panel);
+    padding: 12px;
+    border-radius: 10px;
+    color: #fff
+}
+
+.chart-card h3 {
+    margin: 0 0 8px 0;
+    font-size: 14px;
+    color: #cbd5e1
+}
+
+canvas {
+    background: transparent;
+    border-radius: 6px
+}
+
+@media(min-width:900px) {
+    .charts-grid {
+        flex-direction: row
+    }
+
+    .chart-card {
+        flex: 1
+    }
+}
